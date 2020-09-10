@@ -5,6 +5,9 @@ metadata:
   namespace: demo-app
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: demo-app
   strategy:
     rollingUpdate:
       maxSurge: 1
