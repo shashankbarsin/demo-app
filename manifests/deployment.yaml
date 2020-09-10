@@ -1,21 +1,26 @@
-apiVersion : apps/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: demo-app
   namespace: demo-app
 spec:
   replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5 
   template:
     metadata:
       labels:
-        app: demo-app 
+        app: demo-app
     spec:
       nodeSelector:
         kubernetes.io/arch: amd64
         kubernetes.io/os: linux
       containers:
-        - name: demo-app
-          image: shashankbarsin/demo-app:latest
-          imagePullPolicy: Always
-          ports:
-          - containerPort: 8080
+      - name: demo-app
+        image: shashankbarsin/demo-app:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
