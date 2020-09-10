@@ -1,0 +1,13 @@
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: azure-arc-sample
+  namespace: arc-k8s-demo
+spec:
+  releaseName: arc-k8s-demo
+  chart:
+    git: https://github.com/shashankbarsin/demo-app
+    ref: main
+    path: charts/demo-app
+  values:
+    serviceName: demo-app
