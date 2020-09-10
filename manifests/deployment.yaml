@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Release.Name}}
-  namespace: {{ .Release.Namespace }}
+  name: demo-app
+  namespace: demo-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{.Release.Name}}
+      app: demo-app
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -16,13 +16,13 @@ spec:
   template:
     metadata:
       labels:
-        app: {{.Release.Name}}
+        app: demo-app
     spec:
       nodeSelector:
         kubernetes.io/arch: amd64
         kubernetes.io/os: linux
       containers:
-      - name: {{.Release.Name}}
+      - name: demo-app
         image: shashankbarsin/demo-app:latest
         imagePullPolicy: Always
         ports:
