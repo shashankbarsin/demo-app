@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: demo-app
   namespace: demo-app
+  annotations:
+    fluxcd.io/automated: "true"
+    fluxcd.io/tag.demo-app: semver:~1.0
 spec:
   replicas: 1
   selector:
@@ -23,7 +26,7 @@ spec:
         kubernetes.io/os: linux
       containers:
       - name: demo-app
-        image: shashankbarsin/demo-app:latest
+        image: shashankbarsin/demo-app:1.0.0
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
