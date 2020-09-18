@@ -1,7 +1,10 @@
 trigger:
   branches:
-    exclude:
-      - '*'
+    include:
+      - main
+  paths:
+    exclude: 
+    - manifests/* 
 
 resources:
 - repo: self
@@ -17,5 +20,5 @@ stages:
     steps:
     - script: |
         docker login -u shashankbarsin -p $(password)
-        docker build -f Dockerfile -t shashankbarsin/demo-app:$(tag) .
-        docker push shashankbarsin/demo-app:$(tag)
+        docker build -f Dockerfile -t shashankbarsin/demo-app:1.0.0 .
+        docker push shashankbarsin/demo-app:1.0.0
