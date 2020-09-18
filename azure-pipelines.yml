@@ -1,11 +1,10 @@
 trigger:
-- master
+  branches:
+    exclude:
+      - .*
 
 resources:
 - repo: self
-
-variables:
-  tag: '$(Build.BuildId)'
 
 stages:
 - stage: Build
@@ -18,5 +17,5 @@ stages:
     steps:
     - script: |
         docker login -u shashankbarsin -p $(password)
-        docker build -f Dockerfile -t shashankbarsin/demo-app:1.0.0 .
-        docker push shashankbarsin/demo-app:1.0.0
+        docker build -f Dockerfile -t shashankbarsin/demo-app:$(tag) .
+        docker push shashankbarsin/demo-app:$(tag)
