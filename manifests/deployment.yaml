@@ -26,7 +26,7 @@ spec:
         kubernetes.io/os: linux
       containers:
       - name: demo-app
-        image: shashankbarsin/demo-app:1.0.0
+        image: shashankbarsin/demo-app:1.0.1
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
