@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - main
+  
+jobs:      
+  deploy-to-cluster:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master    
+      
+    - uses: azure/k8s-set-context@users/shigupt/arc-set-context
+      with:
+        cluster-type: 'arc'
+        creds: '${{ secrets.AZURE_CREDS }}'
+        token: '${{ secrets.SA_TOKEN }}'
+        resource-group: 'shiguptOnpremARC'
+        cluster-name: 'onpremARCClus'   
+        
+    - run: |
+        kubectl apply -f manifests/namespace.yaml
+        kubectl apply -f manifests/deployment.yaml
+        kubectl apply -f manifests/service.yaml
+                          
