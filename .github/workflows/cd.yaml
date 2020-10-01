@@ -4,7 +4,10 @@ on:
       - main
     paths:
       - manifests/*
-  
+  workflow_dispatch:
+    branches:
+      - main
+
 jobs:      
   deploy-to-cluster:
     runs-on: ubuntu-latest
