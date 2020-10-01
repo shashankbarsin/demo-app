@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@master    
       
-    - uses: azure/k8s-set-context@users/shigupt/arc-set-context
+    - uses: azure/k8s-set-context@cluster-connect
       with:
         cluster-type: 'arc'
         creds: '${{ secrets.AZURE_CREDS }}'
