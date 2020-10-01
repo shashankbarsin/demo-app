@@ -16,8 +16,8 @@ jobs:
         cluster-type: 'arc'
         creds: '${{ secrets.AZURE_CREDS }}'
         token: '${{ secrets.SA_TOKEN }}'
-        resource-group: 'shiguptOnpremARC'
-        cluster-name: 'onpremARCClus'   
+        resource-group: 'shasb'
+        cluster-name: 'clusterconnectdemo'   
         
     - run: |
         kubectl apply -f manifests/namespace.yaml
