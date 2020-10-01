@@ -16,8 +16,8 @@ jobs:
         cluster-type: 'arc'
         creds: '${{ secrets.AZURE_CREDS }}'
         token: '${{ secrets.SA_TOKEN }}'
-        resource-group: 'shasb'
-        cluster-name: 'clusterconnectdemo'   
+        resource-group: 'clusterconnectdemo'
+        cluster-name: 'shasb'   
         
     - run: |
         kubectl apply -f manifests/namespace.yaml
