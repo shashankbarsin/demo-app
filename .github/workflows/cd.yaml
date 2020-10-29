@@ -20,7 +20,7 @@ jobs:
         creds: '${{ secrets.AZURE_CREDS }}'
         token: '${{ secrets.SA_TOKEN }}'
         resource-group: 'shasbakstest'
-        cluster-name: 'shasbakstest'   
+        cluster-name: 'demo-cluster'   
         
     - run: |
         kubectl apply -f manifests/namespace.yaml
